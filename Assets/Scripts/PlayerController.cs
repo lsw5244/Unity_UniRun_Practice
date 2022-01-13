@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         // 사망 처리
         playerAudio.clip = deathClip;
         animator.SetTrigger("Die");
+        playerAudio.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 바닥에 닿았음을 감지하는 처리
-        if(collision.GetContact(0).normal.y > 0.7f)
+        if(collision.GetContact(0).normal.y > 0.7f) // 0.7은 약 45도
         {
             isGrounded = true;
             jumpCount = 0;
